@@ -15,7 +15,7 @@ export default function App() {
     handleClick,
     handleBackgroundClick,
     drawCategoryNode,
-    drawNormalNode
+    drawNormalNode, zoom, setZoom, zoomIn, zoomOut
   } = useContext(GeneralContext)
 
 
@@ -30,7 +30,11 @@ export default function App() {
     <div className="home" >
 
       <div className="graph-container" >
-        <h2 className="graph-label">Graph  Visualisation</h2>
+        {/* <h2 className="graph-label">المعلم البياني </h2> */}
+        <div className="buttons" >
+          <div className="button-zoom" onClick={zoomIn} >+</div>
+          <div className="button-zoom" onClick={zoomOut} >-</div>
+        </div>
         <ForceGraph3D
           showNavInfo={false}
           ref={fgRef}
@@ -52,15 +56,16 @@ export default function App() {
           width={750}
           height={500}
         />
+
       </div>
 
       <div className="table-container" >
         <div dir="rtl" className="table-content" >
-          <h2>Nodes </h2>
+          <h2>بيانات  </h2>
           <ResponsiveTable />
         </div>
         <div dir="rtl" className="table-content" >
-          <h2>Node Informations</h2>
+          <h2>معلومات </h2>
           <TableInfo />
         </div>
 
